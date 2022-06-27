@@ -42,13 +42,15 @@
   </div>
 
   <div class="field">
-    <%= form.label :condition %>
-    <%= form.number_field :condition %>
+      <% @conditions.each do |option| %>
+      <%= form.label :condition, option %>
+      <%= form.radio_button :condition, option %>
+    <% end %>
   </div>
 
   <div class="field">
     <%= form.label :genre_id %>
-    <%= form.text_field :genre_id %>
+    <%= form.select :genre_id, @genres.map {|g| [g.genre, g.id]} %>
   </div>
 
   <div class="field">
