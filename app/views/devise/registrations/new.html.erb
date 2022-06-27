@@ -3,6 +3,29 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+  <%# here we can specify which fields we want included in the sign-up page.%>
+
+  <%# this is the first_name field: %>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <%# this is the last_name field: %>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <%# this is the username field: %>
+
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, autofocus: true %>
+  </div>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

@@ -1,3 +1,7 @@
+<%# renders a navbar and chooses what to display depending on whether the user is signed in. %>
+<%# there is a link with the "", then the path. For delete, the method has to be specified %>
+<%# otherwise rails will assume it's a GET request. %>
+
 <% if user_signed_in? %>
 <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
 <% else %>
