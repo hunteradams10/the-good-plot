@@ -48,6 +48,11 @@
     <%= form.select :genre_id, @genres.map {|g| [g.genre, g.id]} %>
   </div>
 
+  <div class="field">
+    <%= form.label :picture %>
+    <%= form.file_field :picture, accept: "image/png,image/jpg,image/jpeg" %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
