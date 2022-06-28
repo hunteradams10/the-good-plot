@@ -8,6 +8,7 @@
     <% end %>
 </div>
 
+
 <p>
   <strong>Title:</strong>
   <%= @listing.title %>
@@ -52,7 +53,7 @@
   <strong>User:</strong>
   <%= @listing.user_id %>
 </p>
-<% if current_user.id == @listing.user_id %>
+<% if user_signed_in? && current_user.id == @listing.user_id %>
   <%= link_to 'Edit', edit_listing_path(@listing) %> |
 <% end %>
 
