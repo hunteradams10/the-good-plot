@@ -2,9 +2,14 @@
 <%# there is a link with the "", then the path. For delete, the method has to be specified %>
 <%# otherwise rails will assume it's a GET request. %>
 
+<%= link_to "Home", root_path %>
+<%= link_to "Listings", listings_path %>
+
+<span style="float: right">
 <% if user_signed_in? %>
 <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
 <% else %>
 <%= link_to "Sign Up", new_user_registration_path %>
 <%= link_to "Sign In", new_user_session_path %>
 <% end %>
+</span>
