@@ -37,13 +37,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :sold %>
-    <%= form.check_box :sold %>
-  </div>
-
-  <div class="field">
       <% @conditions.each do |option| %>
-      <%= form.label :condition, option %>
+      <%= form.label :condition, format_condition(option) %>
       <%= form.radio_button :condition, option %>
     <% end %>
   </div>
@@ -54,8 +49,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.label :picture %>
+    <%= form.file_field :picture, accept: "image/png,image/jpg,image/jpeg" %>
   </div>
 
   <div class="actions">

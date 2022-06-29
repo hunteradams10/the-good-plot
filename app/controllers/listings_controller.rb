@@ -1,6 +1,8 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: %i[ show edit update destroy ]
+  before_action :set_listing, only: %i[ show edit update destroy place_order ]
   before_action :set_form_vars, only: %i[ new edit ]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authorize_user, only: [:edit, :update, :destroy]
 
   # GET /listings or /listings.json
   def index
@@ -23,6 +25,7 @@ class ListingsController < ApplicationController
   # POST /listings or /listings.json
   def create
     @listing = Listing.new(listing_params)
+    @listing.user = current_user
 
     respond_to do |format|
       if @listing.save
@@ -58,6 +61,16 @@ class ListingsController < ApplicationController
     end
   end
 
+  def place_order
+    Order.create(
+      listing_id: @listing.id,
+      seller_id: @listing.user_id,
+      buyer_id: current_user.id
+    )
+
+    redirect_to order_success_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
@@ -69,8 +82,15 @@ class ListingsController < ApplicationController
       @conditions = Listing.conditions.keys
     end
 
+    def authorize_user
+      if @listing.user_id != current_user.id 
+        flash[:alert] = "You can't edit listings that don't belong to you."
+        redirect_to listings_path
+      end
+    end
+
     # Only allow a list of trusted parameters through.
     def listing_params
-      params.require(:listing).permit(:title, :author, :publisher, :price, :summary, :sold, :condition, :genre_id, :user_id)
+      params.require(:listing).permit(:title, :author, :publisher, :price, :summary, :sold, :condition, :genre_id, :user_id, :picture)
     end
 end
