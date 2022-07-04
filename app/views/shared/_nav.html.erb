@@ -1,15 +1,10 @@
+
+
 <%# renders a navbar and chooses what to display depending on whether the user is signed in. %>
 <%# there is a link with the "", then the path. For delete, the method has to be specified %>
 <%# otherwise rails will assume it's a GET request. %>
-
 <%= link_to "Home", root_path %>
 <%= link_to "Listings", listings_path %>
-
-<span> 
-<%= link_to "Bought Books", orders_bought_path %>
-<%= link_to "Sold Books", orders_sold_path %>
-
-</span>
 
 <span style="float: right">
 <% if user_signed_in? %>
