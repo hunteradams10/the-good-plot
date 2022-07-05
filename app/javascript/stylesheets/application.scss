@@ -1,10 +1,26 @@
+
+
 $clr-sold: #c8e6c9;
 $clr-not: #ffcdd2;
 $clr-gray300: #e1e5ee;
 
 body {
     background-color: azure ;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
 }
+
+.sign{
+    display:block;
+    float:right;
+    padding-right: 2rem;
+}
+
+.collapsed{
+    display:none;
+}
+
 
 a {
     text-decoration: none;
@@ -17,7 +33,7 @@ table {
     box-shadow: 0 5px 10px $clr-gray300;
     background-color: white;
     text-align: left;
-    overflow: hidden;
+    overflow:hidden;
 
     thead {
         box-shadow:0 5px 10px $clr-gray300;
@@ -43,5 +59,37 @@ table {
     }
     .sold{
         background-color: blue;
+    }
+}
+
+@media screen and (max-width: 600px){
+    thead{
+        display: none;
+    }
+
+    td{
+        display:block;
+    }
+
+    td:first-child{
+        background-color: #333;
+        color: #ffff;
+        text-align:center;
+    }
+
+    h1{
+        text-align: center;
+    }
+
+    .sign{
+        display:block;
+        float:right;
+        padding-right: 2rem;
+    }
+
+    .collapsed{
+        display:block;
+        float:right;
+        padding-right: 2rem;
     }
 }

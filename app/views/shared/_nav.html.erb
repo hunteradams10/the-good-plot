@@ -4,7 +4,7 @@
 <%# there is a link with the "", then the path. For delete, the method has to be specified %>
 <%# otherwise rails will assume it's a GET request. %>
 
-<nav class="navbar navbar-expand-lg .bg-light.bg-gradient">
+<nav class="navbar navbar-expand-sm .bg-light.bg-gradient">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">The Good Plot</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,11 +27,16 @@
   </div>
 </nav>
 
-<span style="float: right">
+<div class="collapsed">
+ <%= link_to "Home |", root_path %>
+ <%= link_to " Listings", listings_path %>
+</div>
+
+<div class="sign">
 <% if user_signed_in? %>
 <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
 <% else %>
-<%= link_to "Sign Up", new_user_registration_path %>
-<%= link_to "Sign In", new_user_session_path %>
+<%= link_to "Sign Up |", new_user_registration_path %>
+<%= link_to " Sign In", new_user_session_path %>
 <% end %>
-</span>
+</div>
