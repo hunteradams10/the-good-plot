@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+
 <h1>Listings</h1>
 
+<div class="d-flex p-2">
 <table>
   <thead>
     <tr>
@@ -26,7 +28,7 @@
         <td><%= listing.publisher %></td>
         <td><%= listing.price %></td>
         <td><%= listing.summary %></td>
-        <td><%= listing.sold %></td>
+        <td><p class="status"><%= listing.sold %></p></td>
         <td><%= listing.condition %></td>
         <td><%= listing.genre_id %></td>
         <td><%= listing.user_id %></td>
@@ -41,5 +43,6 @@
 </table>
 
 <br>
+</div>
 
 <%= link_to 'New Listing', new_listing_path %>
