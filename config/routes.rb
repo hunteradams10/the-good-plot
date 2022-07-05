@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'favorites/update'
   get 'orders/bought'
   get 'orders/sold'
   resources :listings

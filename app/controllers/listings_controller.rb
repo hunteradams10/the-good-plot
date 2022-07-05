@@ -11,6 +11,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/1 or /listings/1.json
   def show
+    @favorite_exists = Favorite.where(listing: @listing, user: current_user) == [] ? false : true
   end
 
   # GET /listings/new

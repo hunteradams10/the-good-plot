@@ -17,5 +17,7 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+require("@rails/ujs").start()
 require("trix")
 require("@rails/actiontext")
+require("jquery")
