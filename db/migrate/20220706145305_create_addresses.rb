@@ -11,6 +11,7 @@ class CreateAddresses < ActiveRecord::Migration[6.1]
       t.integer :post_code
       t.string :country
       t.integer :phone
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_05_044132) do
+ActiveRecord::Schema.define(version: 2022_07_06_145305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,13 @@ ActiveRecord::Schema.define(version: 2022_07_05_044132) do
     t.integer "post_code"
     t.string "country"
     t.integer "phone"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -81,6 +88,16 @@ ActiveRecord::Schema.define(version: 2022_07_05_044132) do
     t.string "genre"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.bigint "listing_id", null: false
+    t.bigint "cart_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "quantity", default: 1
+    t.index ["cart_id"], name: "index_line_items_on_cart_id"
+    t.index ["listing_id"], name: "index_line_items_on_listing_id"
   end
 
   create_table "listings", force: :cascade do |t|
@@ -127,8 +144,11 @@ ActiveRecord::Schema.define(version: 2022_07_05_044132) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "addresses", "users"
   add_foreign_key "favorites", "listings"
   add_foreign_key "favorites", "users"
+  add_foreign_key "line_items", "carts"
+  add_foreign_key "line_items", "listings"
   add_foreign_key "listings", "genres"
   add_foreign_key "listings", "users"
   add_foreign_key "orders", "listings"

@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :sold_orders, foreign_key: "seller_id", class_name: "Order"
   has_many :bought_orders, foreign_key: "buyer_id", class_name: "Order"
   has_many :favorites
+  has_one :address
 
   after_create :welcome_send
   
