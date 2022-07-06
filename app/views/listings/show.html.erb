@@ -11,7 +11,7 @@
 <% if @listing.sold %>
 <p>SOLD</p>
 <% elsif current_user && current_user.id == @listing.user_id %>
-<p>You can't buy your own book. Defeats the purpose a little.</p>
+<p>You cannot buy this.</p>
 <% elsif current_user %>
 <%= button_to "Buy this book", place_order_path %>
 <% else %>
@@ -25,6 +25,8 @@
   <strong>Title:</strong>
   <%= @listing.title %>
 </p>
+
+<h1><%= @listing.title%></h1>
 
 <p>
   <strong>Author:</strong>
