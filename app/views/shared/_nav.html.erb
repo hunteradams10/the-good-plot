@@ -43,10 +43,18 @@
                         <a href="/listings" class="nav-link">Listings</a>
                     </li>
                                         <li class="nav-item">
-                        <a href="/orders/bought" class="nav-link">Bought</a>
+                        <% if current_user %> 
+                          <a href="/orders/bought" class="nav-link">Bought</a>
+                        <% else %>
+                          <% nil %>
+                        <% end %>
                     </li>
                                         <li class="nav-item">
+                        <% if current_user %>
                         <a href="/orders/sold" class="nav-link">Sold</a>
+                        <% else %>
+                          <% nil %>
+                        <% end %>
                     </li>
                 </ul>
             </div>
@@ -55,10 +63,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-<div class="collapsed">
- <%= link_to "Home |", root_path %>
- <%= link_to " Listings", listings_path %>
-</div>
 
 <div class="sign">
 <% if user_signed_in? %>

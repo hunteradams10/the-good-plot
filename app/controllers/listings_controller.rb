@@ -6,6 +6,7 @@ class ListingsController < ApplicationController
 
   # GET /listings or /listings.json
 
+
   # This is querying the database and storing all of the listings in there, into the variable @listings.
   def index
     @listings = Listing.all
