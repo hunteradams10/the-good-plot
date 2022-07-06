@@ -14,11 +14,4 @@ class User < ApplicationRecord
   has_many :bought_orders, foreign_key: "buyer_id", class_name: "Order"
   has_many :favorites
   has_one :address
-
-  after_create :welcome_send
-  
-  def welcome_send
-    WelcomeMailer.welcome_send(self).deliver
-    #redirect_to root_path, alert: "Thank you for signing up!"
-  end
 end
