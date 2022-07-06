@@ -5,16 +5,20 @@ class ListingsController < ApplicationController
   before_action :authorize_user, only: [:edit, :update, :destroy]
 
   # GET /listings or /listings.json
+
+  # This is querying the database and storing all of the listings in there, into the variable @listings.
   def index
     @listings = Listing.all
   end
 
   # GET /listings/1 or /listings/1.json
   def show
+    # querying Favorite database, looking for Favourite where, if the favourite array isn't empty, display what has been favourited.
     @favorite_exists = Favorite.where(listing: @listing, user: current_user) == [] ? false : true
   end
 
   # GET /listings/new
+  # Creates a new listing using the Listing model specifications (see: views/listings/new.html.erb)
   def new
     @listing = Listing.new
   end
@@ -25,12 +29,16 @@ class ListingsController < ApplicationController
 
   # POST /listings or /listings.json
   def create
+    # The post request that submits the form. It is created using the listing parameters and 
+    # then assigned to the current user.
+
     @listing = Listing.new(listing_params)
     @listing.user = current_user
 
+
     respond_to do |format|
       if @listing.save
-        format.html { redirect_to listing_url(@listing), notice: "Listing was successfully created." }
+        format.html { redirect_to listing_url(@listing), notice: "You successfully created a listing! 😎" }
         format.json { render :show, status: :created, location: @listing }
       else
         format.html { render :new, status: :unprocessable_entity }
