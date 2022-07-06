@@ -1,4 +1,8 @@
 class FavoritesController < ApplicationController
+  def show
+    
+  end
+
   def update
     # Passing in the listing parameters and finding the ID of the listing by using Listing.find
     favorite = Favorite.where(listing: Listing.find(params[:listing]), user: current_user)
