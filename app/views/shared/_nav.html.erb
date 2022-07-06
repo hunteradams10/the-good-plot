@@ -42,20 +42,19 @@
                     <li class="nav-item">
                         <a href="/listings" class="nav-link">Listings</a>
                     </li>
+                    <% if user_signed_in? %>
                     <li class="nav-item">
                         <a href="/orders/bought" class="nav-link">Bought</a>
                     </li>
                     <li class="nav-item">
                         <a href="/orders/sold" class="nav-link">Sold</a>
                     </li>
-<<<<<<< HEAD
                     <li class="nav-item">
                         <a href="/addresses" class="nav-link">Order Addresses</a>
-=======
                       <li class="nav-item">
                         <a href="/favorites/show" class="nav-link">Favourites</a>
->>>>>>> dd8b98c5540711ac8684d23c8043fd42e9cafd8c
                     </li>
+                    <% end %>
                 </ul>
             </div>
         </nav>
