@@ -71,12 +71,14 @@ class ListingsController < ApplicationController
   end
 
   def place_order
+    # creating an order based off the Order model parameters.
+    # associating the order with the ID of the listing, the seller ID attached to the listing, and the current user who is ordering it.
     Order.create(
       listing_id: @listing.id,
       seller_id: @listing.user_id,
       buyer_id: current_user.id
     )
-
+    # update the sold parameter on the model to 'true'.
     @listing.update(sold: true)
 
     redirect_to orders_success_path
@@ -84,11 +86,14 @@ class ListingsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    # we set the method "set_listing" to find the listing that matches the ID in the params.
     def set_listing
       @listing = Listing.find(params[:id])
     end
 
     def set_form_vars
+      # these queries are calling the Genre and Listing models, and in the case of Genre, is storing
+      # all the genres in an instance variable. Same with the keys of the conditions hash.
       @genres = Genre.all 
       @conditions = Listing.conditions.keys
     end
