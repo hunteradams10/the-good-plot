@@ -50,9 +50,15 @@ On [<%= favorite.created_at.strftime("%D at %T") %>] you favourited this listing
         <td><%= listing.user_id %></td>
         <td><%= link_to 'Show', listing %></td>
         <%# If the user is logged in and is the same user that created the listing, OR an admin, they can edit/destroy listings %>
-        <% if current_user && current_user.id == listing.user_id || current_user.admin %>
-          <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
+        <% if current_user && current_user.id == listing.user_id %>
+                  <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
           <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       
+       <%# ***** NOT WORKING, not sure why ******** %>
+       
+        <%# <% elsif current_user.admin %> %>
+          <%# <td><%= link_to 'Edit', edit_listing_path(listing) %></td> %>
+          <%# <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td> %>
           <% end %>
       </tr>
     <% end %>
