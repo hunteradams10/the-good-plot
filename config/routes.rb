@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :addresses
   get 'favorites/update'
+  get 'favorites/show'
   get 'orders/bought'
   get 'orders/sold'
   resources :listings
