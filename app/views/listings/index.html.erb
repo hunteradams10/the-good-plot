@@ -1,17 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Your Favourite Posts</h1>
-
-<%# Displays the listings that the user has favourited, and what date/time they did so using STRFTIME.net %>
-<% if current_user %>
-<% current_user.favorites.each do |favorite| %>
-On [<%= favorite.created_at.strftime("%D at %T") %>] you favourited this listing: <%= link_to favorite.listing.title, favorite.listing %>
-<br>
-<% end %>
-<% else %>
-  
-<% end %>
-
 
 <%# The table below is how the data for the Listings Page is represented. I hope I get time to change this %>
 <%# not great for responsivity. %>
