@@ -42,6 +42,7 @@
                     <li class="nav-item">
                         <a href="/listings" class="nav-link">Listings</a>
                     </li>
+                    <% if user_signed_in? %>
                     <li class="nav-item">
                         <a href="/orders/bought" class="nav-link">Bought</a>
                     </li>
@@ -53,6 +54,7 @@
                       <li class="nav-item">
                         <a href="/favorites/show" class="nav-link">Favourites</a>
                     </li>
+                    <% end %>
                 </ul>
             </div>
         </nav>
