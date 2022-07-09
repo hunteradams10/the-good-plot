@@ -10,5 +10,6 @@ FactoryBot.define do
     post_code { 1 }
     country { "MyString" }
     phone { 1 }
+    user { nil }
   end
 end

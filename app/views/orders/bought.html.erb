@@ -1,0 +1,30 @@
+<h1>Your Purchases</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Publisher</th>
+      <th>Price</th>
+      <th>Summary</th>
+      <th>Condition</th>
+      <th>Genre</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bought_items.each do |item| %>
+      <tr>
+        <td><%= item.listing.title %></td>
+        <td><%= item.listing.author %></td>
+        <td><%= item.listing.publisher %></td>
+        <td><%= number_to_currency(item.listing.price) %></td>
+        <td><%= item.listing.summary %></td>
+        <td><%= item.listing.condition %></td>
+        <td><%= item.listing.genre.genre %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
