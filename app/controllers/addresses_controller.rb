@@ -4,6 +4,7 @@ class AddressesController < ApplicationController
 
   # GET /addresses or /addresses.json
   def index
+    # sets @addresses instance variable to include all addresses in the Address model.
     @addresses = Address.all
   end
 
@@ -13,6 +14,7 @@ class AddressesController < ApplicationController
 
   # GET /addresses/new
   def new
+    # Creates a new address with the attributes in the Address model.
     @address = Address.new
   end
 
@@ -22,6 +24,7 @@ class AddressesController < ApplicationController
 
   # POST /addresses or /addresses.json
   def create
+    # Makes a new address from the model parameters and takes the association from the url parameters.
     @address = Address.new(address_params)
 
     respond_to do |format|
