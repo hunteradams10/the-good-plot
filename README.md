@@ -44,5 +44,5 @@ This application runs on the following:
 * CSS
 * html
 * Javascript
-* Hosted on Heroku
+* Heroku
 * Bootstrap for responsiveness and stlying
